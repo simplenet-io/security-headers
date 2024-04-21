@@ -1,0 +1,22 @@
+<?php
+/*
+Plugin Name: Security Headers Plugin
+Description: Adds security headers to enhance website security.
+Version: 1.0
+Author: Andrei Chira
+*/
+
+// Hook to add security headers
+add_action('send_headers', 'add_security_headers');
+
+function add_security_headers() {
+    // Add security headers
+    header('Referrer-Policy: no-referrer-when-downgrade');
+    header('Permissions-Policy: geolocation=(self "https://simplenet.io/"), microphone=()');
+    header('X-Frame-Options: SAMEORIGIN');
+    header('X-XSS-Protection: 1; mode=block');
+    header("Content-Security-Policy: frame-ancestors 'self';");
+
+    // You can add more headers as needed
+}
+?>
